@@ -107,7 +107,7 @@ with st.form("prediction_form"):
     with c3:
         outstanding_debt = st.number_input("Outstanding Debt ($)", min_value=0.0, max_value=5000.0, value=500.0, step=50.0)
     with c4:
-        changed_credit_limit = st.number_input("Changed Credit Limit ($)", min_value=-10.0, max_value=40.0, value=0.0, step=0.5)
+        changed_credit_limit = st.number_input("Changed Credit Limit (%)", min_value=-10.0, max_value=40.0, value=0.0, step=0.5)
 
     c5, c6, c7, c8 = st.columns(4)
     with c5:
