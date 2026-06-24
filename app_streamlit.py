@@ -25,6 +25,7 @@ PAYMENT_BEHAVIOUR_LABELS = {
     "Low_spent_Small_value_payments":   "Low Spending - Small Transactions",
     "High_spent_Medium_value_payments": "High Spending - Medium Transactions",
     "High_spent_Large_value_payments":  "High Spending - Large Transactions",
+    "Unknown": "Unknown",
 }
 
 PAYMENT_BEHAVIOUR_REVERSE = {v: k for k, v in PAYMENT_BEHAVIOUR_LABELS.items()}
