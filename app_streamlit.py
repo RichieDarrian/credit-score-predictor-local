@@ -18,14 +18,16 @@ model = load_model()
 
 LABEL_MAP = {0: "Poor", 1: "Standard", 2: "Good"}
 
-PAYMENT_BEHAVIOUR_OPTIONS = [
-    "High_spent_Small_value_payments",
-    "Low_spent_Large_value_payments",
-    "Low_spent_Medium_value_payments",
-    "Low_spent_Small_value_payments",
-    "High_spent_Medium_value_payments",
-    "High_spent_Large_value_payments",
-]
+PAYMENT_BEHAVIOUR_LABELS = {
+    "High_spent_Small_value_payments":  "High Spending - Small Transactions",
+    "Low_spent_Large_value_payments":   "Low Spending - Large Transactions",
+    "Low_spent_Medium_value_payments":  "Low Spending - Medium Transactions",
+    "Low_spent_Small_value_payments":   "Low Spending - Small Transactions",
+    "High_spent_Medium_value_payments": "High Spending - Medium Transactions",
+    "High_spent_Large_value_payments":  "High Spending - Large Transactions",
+}
+
+PAYMENT_BEHAVIOUR_REVERSE = {v: k for k, v in PAYMENT_BEHAVIOUR_LABELS.items()}
 
 LOAN_COLS = [
     "Auto Loan",
@@ -147,7 +149,12 @@ with st.form("prediction_form"):
     with c18:
         payment_of_min_amount = st.selectbox("Payment of Min Amount", options=["Yes", "No", "Unknown"])
     with c19:
-        payment_behaviour = st.selectbox("Payment Behaviour", options=PAYMENT_BEHAVIOUR_OPTIONS)
+        payment_behaviour_label = st.selectbox(
+            "Payment Behaviour",
+            options=list(PAYMENT_BEHAVIOUR_LABELS.values()),
+            help="How you typically spend and what transaction sizes you make most often.",
+        )
+        payment_behaviour = PAYMENT_BEHAVIOUR_REVERSE[payment_behaviour_label]
 
     st.subheader("Active Loan Types")
     loan_types = st.multiselect(
