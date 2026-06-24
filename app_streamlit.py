@@ -153,7 +153,7 @@ with st.form("prediction_form"):
         payment_behaviour_label = st.selectbox(
             "Payment Behaviour",
             options=list(PAYMENT_BEHAVIOUR_LABELS.values()),
-            help="How you typically spend and what transaction sizes you make most often.",
+            help="How the customer typically spend and what transaction sizes the customer make most often.",
         )
         payment_behaviour = PAYMENT_BEHAVIOUR_REVERSE[payment_behaviour_label]
 
